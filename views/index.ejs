@@ -1,0 +1,101 @@
+<%- include('./partials/header.ejs') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 mt-5">
+                <h2 class="alert alert-success text-center">Add New student </h2>
+
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">
+                            Name
+
+                        </label>
+                        <input type="text" class="form-control" id="age" name="age" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">
+                            Age
+
+                        </label>
+                        <input type="text" class="form-control" id="name" name="name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">
+                            Fees
+
+                        </label>
+                        <input type="text" class="form-control" id="fee" name="fee" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="col-sm-6 mt-5">
+
+                <h2 class="alert alert-danger text-center">List of student </h2>
+                <table class="table <table class=" table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">FEE</th>
+                            <th scope="col">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% let i=1 %>
+                            <% result.forEach((item)=>{%>
+                                <tr>
+                                    <td>
+                                        <%= i++ %>
+                                    </td>
+                                    <td>
+                                        <%=item.name%>
+                                    </td>
+                                    <td>
+                                        <%=item.age%>
+                                    </td>
+                                    <td>
+                                        <%=item.fee %>
+                                    </td>
+                                    <td>
+
+                                        <form action="student/edit/<%=item._id%>" method="get" class="d-inline">
+                                            <button type="submit" class="btn btn-warning">
+                                                <i class="fas fa-pen-square text-info">Edit</i>
+
+                                            </button>
+
+
+                                        </form>
+                                        <form action="student/delete/<%=item._id%>" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-trash ">Del</i>
+
+                                            </button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                                <% })%>
+
+
+                    </tbody>
+                </table>
+
+                </table>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
